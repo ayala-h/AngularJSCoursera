@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "angular": "^1.8.2",
+    "browser-sync": "^2.29.1"
+  }
+}
