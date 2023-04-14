@@ -7,10 +7,19 @@
 </head>
 <body>
     <h1>My Github Page</h1>
-    <div ng-controller="MyFirstController">
-        <input type="text" ng-model="name" ng-keyup="displayNameValue()" ng-blur="blur()">
-        <p>Name: {{name}}</p>
-        <p>Total: {{nameValue}}</p>
+    <div ng-controller="MyFirstController as Ctrl1">
+        <input type="text" ng-model="Ctrl1.name">
+        <br><br>
+        <input type="text" ng-model="Ctrl1.task">
+        <input type="text" ng-model="Ctrl1.time">
+        <button ng-click="Ctrl1.addToList()">Add</button><br><br>
+        Filter: <input type="text" ng-model="Ctrl1.search">
+        <p>Error: {{Ctrl1.error}}</p>
+        <p>{{Ctrl1.name | shortenName}}'s To-do List</p>
+        <li ng-repeat="item in Ctrl1.getList() | filter : Ctrl1.search">
+            {{$index + 1}}. {{item.task}} @ {{item.time}}
+            <button ng-click="Ctrl1.removeFromList($index)">Remove</button>
+        </li>
     </div>
 </body>
 </html>
